@@ -1,20 +1,22 @@
+/**********/
 /* Fonts: */
+/**********/
 @font-face{
 	font-family: "myfont";
 	src: url("/static/fonts/nasaFont.ttf") format("truetype");
 	font-family: Futura,"Trebuchet MS",Arial,sans-serif
 }
 
-
+/**************/
 /* NAVIGATION */
+/**************/
 .navbar-header > a {
     font-family: "myfont";
-    font-size: 1.4em;
+    font-size: 1.5em;
 }
 a {
-
     font-family: "myfont";
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
 .navbar {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
@@ -23,8 +25,11 @@ a {
     background: -webkit-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-
     border: none;
+}
+
+.container {
+    width: 90%;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -39,17 +44,24 @@ a {
     color: #2a6496 ;
     background-color: transparent;
 }
-
+/**************/
 /* Background */
+/**************/
 
 body {
-	background: url(/static/imgs/space.jpg) no-repeat center center fixed;
+	background: url(/static/imgs/space.png) no-repeat center center fixed;
  	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
     background-size: cover;
 }
+/***************/
+/* Content Css */
+/***************/
 
+#outer {
+    margin-top: 70px;
+}
 
 
 

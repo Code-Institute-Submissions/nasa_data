@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kepler Dashboard Home</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/reset.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
+
+</head>
+<body>
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Kepler Data Dashboard</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/exoPlanets">Exo-Planets</a></li>
+                <li><a href="/stars">Stars</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- / Navigation -->
+
+
+<!-- Body -->
+    <div id="outer" class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <!-- Chart 6 -->
+                    <div class="col-sm-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Menu Select
+                            </div>
+                            <div class="chart-stage">
+                                <div id="menu-select"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Chart 6 -->
+                    <!-- Chart 1 -->
+                    <div class="col-sm-8">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Identifiers
+                            </div>
+                            <div class="chart-stage">
+                                <div id="chart-one"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Chart 1 -->
+                    <!-- Chart 3 -->
+                    <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Pie
+                            </div>
+                            <div class="chart-stage">
+                                <div id="chart-three"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Chart 3 -->
+                    <!-- Chart 3 -->
+                    <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Pie 2
+                            </div>
+                            <div class="chart-stage">
+                                <div id="chart-four"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Chart 3 -->
+                    <!-- Chart 2 -->
+                    <div class="col-sm-8">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Over Time
+                            </div>
+                            <div class="chart-stage">
+                                <div id="chart-two"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Chart 2 -->
+
+                    <!-- Chart 4 -->
+                    <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Data Table
+                            </div>
+                            <div class="chart-stage">
+                                <div id="dataTable"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Chart 4 -->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- / Body -->
+
+
+
+
+    <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
+</body>
+</html>
+
+
+
+
+
+    <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
+    <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
+</body>

@@ -7,15 +7,17 @@
 	font-family: Futura,"Trebuchet MS",Arial,sans-serif
 }
 
+*, .chart-title, .dc-select-menu, text, th, td, h1, p, a, li {
+    font-family: myfont;
+}
+
 /**************/
 /* NAVIGATION */
 /**************/
 .navbar-header > a {
-    font-family: "myfont";
-    font-size: 1.5em;
+    font-size: 1.7em;
 }
 a {
-    font-family: "myfont";
     font-size: 1.4em;
 }
 .navbar {
@@ -48,7 +50,7 @@ a {
 /* Background */
 /**************/
 
-body {
+body  {
 	background: url(/static/imgs/space.png) no-repeat center center fixed;
  	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -59,9 +61,57 @@ body {
 /* Content Css */
 /***************/
 
-#outer {
+#outer, #outer.jumbotron {
     margin-top: 70px;
+    }
+
+#outer.jumbotron {
+    background: rgb(69,72,77); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    border: 5px solid white;
+    color: white;
+}
+
+#intro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#intro-content > h1 {
+    padding-bottom: 40px;
+}
+
+/**************/
+/* Data Table */
+/**************/
+
+th,td {
+    padding-right: 20px;
+}
+
+/**********/
+/* Graphs */
+/**********/
+
+.chart-stage > ul > li {
+    padding-bottom: 20px;
+}
+
+div > .chart-wrapper {
+    background-color: silver;
 }
 
 
+/**************/
+/* Responsive */
+/**************/
 
+@media screen and (max-width: 1180px) {
+    #img {
+        display: none;
+    }
+}

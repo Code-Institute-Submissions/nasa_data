@@ -1,5 +1,5 @@
 queue()
-    .defer(d3.json, "/keplerData/exoPlanets")
+    .defer(d3.json, '/data/nasaExoPlanets')
     .await(makeGraphs);
 
 function makeGraphs(error, keplerDataExoPlanets) {
@@ -18,128 +18,174 @@ function makeGraphs(error, keplerDataExoPlanets) {
         throw error
     }
 
+    // Format Date
+    var formatYear = d3.time.format("%Y");
+    var formatDate = d3.time.format("%m/%d/%Y");
+
+    keplerDataExoPlanets.forEach(function (d) {
+        d['DiscoveryYear'] = formatYear.parse(d['DiscoveryYear'].toString());
+        d['DiscoveryYear'].setDate(1);
+        d['Updated'] = formatDate.parse(d['Updated']);
+        d['Updated'].setDate(1);
+    });
+
+
     // Crossfilter Instance
     var ndx = crossfilter(keplerDataExoPlanets);
 
-
-    // Dimensions
-    var methodDim = ndx.dimension(function (d) {
-       return d['DiscoveryMethod'];
+    // Create dimensions
+    var telescopeDim = ndx.dimension(function (d) {
+        return d['Telescope'];
     });
 
-    var listTypeDim = ndx.dimension(function (d) {
-        return d['ListsPlanetIsOn'];
+    var methodDim = ndx.dimension(function (d){
+        return d['DiscoveryMethod'];
     });
 
     var dateDim = ndx.dimension(function (d) {
         return d['DiscoveryYear'];
     });
 
+    var updatedDim = ndx.dimension(function (d) {
+     return d['Updated'];
+    });
+
+    var podDim = ndx.dimension(function (d) {
+        return d['PlaceOfDiscovery'];
+    });
+
+    var statusDim = ndx.dimension(function (d){
+        return  d['Status'];
+    });
+
+    // Create metrics
+    var telescopeGroup = telescopeDim.group();
+
+    var dateGroup = dateDim.group();
     var minDate = dateDim.bottom(1)[0]['DiscoveryYear'];
     var maxDate = dateDim.top(1)[0]['DiscoveryYear'];
 
-    var idDim = ndx.dimension(function (d) {
-        return d['PlanetIdentifier']
-    });
+    var updatedGroup = updatedDim.group();
+    var minUpdated = updatedDim.bottom(1)[0]['Updated'];
+    var maxUpdated = updatedDim.top(1)[0]['Updated'];
+    console.log(minUpdated);
+    console.log(maxUpdated);
 
-    var flagDim = ndx. dimension(function (d) {
-        return d['TypeFlag']
-    });
-
-    // Metrics
-    var totalCount = ndx.groupAll().reduceCount().value();
-    console.log(totalCount);
-
-    var methodTypes = methodDim.group();
-
-    var planetListType = listTypeDim.group();
-
-    var dateType = dateDim.group();
-
-    var idType = idDim.group();
-
-    var flagType = flagDim.group();
+    var podGroup = podDim.group();
+    var methodGroup = methodDim.group();
 
     // Scales
-    var dateScale = d3.scale.linear()
-        //.domain([1971, maxDate]);
-        .domain([1971, 2017]);
+
+    var dateScale = d3.time.scale()
+        .domain([minDate, maxDate]);
+
+    var updateScaled = d3.time.scale()
+        .domain([minUpdated, maxUpdated]);
 
     var heightScale = d3.scale.linear()
-        .domain([0, totalCount]);
+        .domain([0, d3.max(keplerDataExoPlanets)])
+        .range(2000);
 
-    // Charts
-    // var selectField = dc.selectMenu('#menu-select');
-    var totalFound = dc.barChart("#chart-one");
-    var listfound = dc.lineChart("#chart-two");
-    var pielist = dc.pieChart("#chart-three");
-    var pielist1 = dc.pieChart("#chart-four");
-    var dataTable = dc.dataTable("#dataTable");
-    var menuSelect = dc.selectMenu('#menu-select');
-    var menuSelect1 = dc.selectMenu('#menu-select1');
+    var colorScale = d3.scale.linear()
+                   .domain([0,d3.max(keplerDataExoPlanets)])
+                   .range(["blue","red"]);
 
-    // Make Charts
-    menuSelect1
-        .dimension(idDim)
-        .group(idType);
+    // Link Graphs
+    var menuSelect = dc.selectMenu("#menu-select");
+    var dateGraph = dc.lineChart("#date-graph");
+    var updatedGraph = dc.lineChart("#updated-graph");
+    var podPie = dc.pieChart('#pod-pie');
+    var methodPie = dc.pieChart('#status-pie');
+    var dataTable = dc.dataTable("#data-table");
+
+    // Create Graphs
 
     menuSelect
-        .dimension(methodDim)
-        .group(methodTypes);
+        .dimension(telescopeDim)
+        .group(telescopeGroup);
 
-    totalFound
-        .width(570)
-        .height(480)
-        .dimension(methodDim)
-        .group(methodTypes)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .yAxisLabel("This is the Y Axis!");
-
-    listfound
-    .width(548)
-        .height(480)
+    dateGraph
+        .height(500)
+        .width(560)
         .dimension(dateDim)
-        .group(dateType)
+        .group(dateGroup)
         .x(dateScale)
-        .yAxisLabel("This is the Y Axis!")
-        .yAxis().ticks(6);
+        .xUnits(function(){return 15;})
+        .xAxisLabel("Year")
+        .yAxisLabel("Number Found")
+        .yAxis().ticks(3);
+
+    updatedGraph
+        .height(500)
+        .width(560)
+        .dimension(updatedDim)
+        .group(updatedGroup)
+        .x(updateScaled)
+        .xUnits(function(){return 15;})
+        .xAxisLabel("Year")
+        .yAxisLabel("Number Found")
+        .yAxis().ticks(3);
+
+    podPie
+        .width(210)
+        .height(221)
+        .slicesCap(5)
+        .innerRadius(10)
+        .dimension(podDim)
+        .group(podGroup);
+
+    methodPie
+        .width(210)
+        .height(221)
+        .slicesCap(5)
+        .innerRadius(10)
+        .dimension(methodDim)
+        .group(methodGroup);
+
+
 
     dataTable
         .height(500)
         .dimension(methodDim)
         .group(function (d) {
-            return d['PlanetIdentifer']
+            return d['HostName']
         })
         .columns([
-            function (d) {
-            return d['PlanetIdentifier']
+            {
+                label: "Host Name",
+                format: function (d) { return d['HostName'];}
             },
-            function (d) {
-            return d['PeriodDays'];
-        }]);
-
-    pielist
-        .width(210)
-        .height(210)
-        .slicesCap(5)
-        .innerRadius(10)
-        .dimension(listTypeDim)
-        .group(planetListType);
-
-    pielist1
-        .width(210)
-        .height(210)
-        .slicesCap(5)
-        .innerRadius(10)
-        .dimension(flagDim)
-        .group(flagType);
-
+            {
+                label: "Planet Name",
+                format: function (d) { return d['PlanetName'];}
+            },
+            {
+                label: "Discovery Method",
+                format: function (d) { return d['DiscoveryMethod'];}
+            },
+            {
+                label: "Place of Discovery",
+                format: function (d) { return d['PlaceOfDiscovery'];}
+            },
+            {
+                label: "Telescope",
+                format: function (d) { return d['Telescope'];}
+            },
+            {
+                label: "Discovery Facility",
+                format: function (d) {return d['DiscoveryFacility'];}
+            },
+            {
+                label: "Last Updated",
+                format: function (d) {return d['Updated'];}
+            }
+        ]);
 
     dc.renderAll();
 
+
+
     var myFilter = methodDim.filter();
     print_filter('myFilter');
-    console.log(methodTypes);
 }
 

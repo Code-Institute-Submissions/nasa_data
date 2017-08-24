@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-DB_NAME = 'exoPlanets'
+DB_NAME = 'nasaExoData'
 COLLECTION_NAME = 'project'
 
 
@@ -23,17 +23,20 @@ def chart():
 def stars():
     return render_template('stars.html')
 
-@app.route('/keplerData/exoPlanets')
+@app.route('/data/nasaExoPlanets')
 def planet_charts():
 
     FIELDS = {
         '_id': False,
-        'PlanetIdentifier': True,
+        'PlanetName': True,
+        'HostName': True,
         'DiscoveryYear':True,
+        'Updated': True,
         'DiscoveryMethod': True,
-        'ListPlanetsIsOn': True,
-        'PeriodDays': True,
-        'TypeFlag': True
+        'PlaceOfDiscovery': True,
+        'DiscoveryFacility': True,
+        'Telescope': True,
+        'Status': True
     }
 
     with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:

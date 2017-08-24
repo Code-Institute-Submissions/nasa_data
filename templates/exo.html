@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kepler Dashboard Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nasa Dashboard Exo-Planets</title>
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/reset.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
@@ -20,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Kepler Data Dashboard</a>
+                <a class="navbar-brand" href="#">Nasa Data Dashboard</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -39,79 +40,93 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
-                    <!-- Chart 6 -->
+                    <!-- Menu Select -->
                     <div class="col-sm-12">
                         <div class="chart-wrapper">
                             <div class="chart-title">
-                                Menu Select
+                                Telescope Select
                             </div>
                             <div class="chart-stage">
                                 <div id="menu-select"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- / Chart 6 -->
-                    <!-- Chart 1 -->
-                    <div class="col-sm-8">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Identifiers
-                            </div>
-                            <div class="chart-stage">
-                                <div id="chart-one"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / Chart 1 -->
-                    <!-- Chart 3 -->
+                    <!-- / Menu Select -->
+                    <!-- Date Graph -->
                     <div class="col-sm-4">
                         <div class="chart-wrapper">
                             <div class="chart-title">
-                                Pie
+                                Year of Discovery
                             </div>
                             <div class="chart-stage">
-                                <div id="chart-three"></div>
+                                <div id="date-graph"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- / Chart 3 -->
-                    <!-- Chart 3 -->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Pie 2
-                            </div>
-                            <div class="chart-stage">
-                                <div id="chart-four"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / Chart 3 -->
-                    <!-- Chart 2 -->
-                    <div class="col-sm-8">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Over Time
-                            </div>
-                            <div class="chart-stage">
-                                <div id="chart-two"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / Chart 2 -->
+                    <!-- / Date Graph -->
 
-                    <!-- Chart 4 -->
+
+                    <!-- Updated Graph-->
                     <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Last Updated
+                            </div>
+                            <div class="chart-stage">
+                                <div id="updated-graph"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Updated Graph -->
+
+
+                    <!-- POD Pie -->
+                    <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Place of Discovery
+                            </div>
+                            <div class="chart-stage">
+                                <div id="pod-pie"></div>
+                                <ul>
+                                    <li>Ground: Can be hindered a lot by the earths atmosphere and light pollution </li>
+                                    <li>Space: although the quality is much better as data isn't obscured by the atmosphere, using space telescopes can be rather expensive</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / POD Pie -->
+
+                    <!-- Status Pie -->
+                    <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Method of Finding
+                            </div>
+                            <div class="chart-stage">
+                                <div id="status-pie"></div>
+                                <ul>
+                                    <li>Imaging: Taking a direct image of the planet; very unlikely but possible</li>
+                                    <li>Radial Velocity: Observe host star for change in position caused by the gravitional pull of other planets</li>
+                                    <li>Transit: Measure for a dip in the host stars brightness, meaning something is passing by to block the light</li>
+                                </ul>
+                            </div>
+                       </div>
+                    </div>
+                    <!-- / Status Pie-->
+
+                    <!-- Data Table -->
+                    <div class="col-sm-12">
                         <div class="chart-wrapper">
                             <div class="chart-title">
                                 Data Table
                             </div>
                             <div class="chart-stage">
-                                <div id="dataTable"></div>
+                                <div id="data-table"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- / Chart 4 -->
+                    <!-- / Data Table-->
 
 
 

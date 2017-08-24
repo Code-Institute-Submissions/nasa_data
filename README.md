@@ -1,7 +1,7 @@
 # Kepler Data-set Dashboard
 ## Overview
 ### What is this app for?
-This dashboard looks at data gathered by the Keplar telescope. For the purpose of this project i added in extra data to fill out the graph. 
+This dashboard looks at data gathered by the Keplar telescope.
 
 Although this project will be focusing on plotting data for Kepler's data-sets on exo-planets, 
 Ive added in a tab for stars too.
@@ -20,13 +20,14 @@ The dashboard plots the different methods used to find exo-planets, and crossfil
 - Mongodb for hosting and storing data
 - Crossfilter for filtering the data for the charts
 - Dc for the charting 
+- Thanks to Nasa for making their datasets avaible to the public
 ## Features
 ### Existing Features
 
 
 ### Features Left to Implement
 - Star graphs
-- Habibility calculator
+- Habitability calculator
 ## Tech Used
 ### Some the tech used includes:
 - [Bootstrap](http://getbootstrap.com/)

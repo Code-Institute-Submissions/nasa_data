@@ -111,8 +111,8 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .group(dateGroup)
         .x(dateScale)
         .xUnits(function(){return 15;})
-        .xAxisLabel("Year")
-        .yAxisLabel("Number Found")
+        .xAxisLabel("Year Found")
+        .yAxisLabel("Total Found")
         .yAxis().ticks(3);
 
     updatedGraph
@@ -122,8 +122,8 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .group(updatedGroup)
         .x(updateScaled)
         .xUnits(function(){return 15;})
-        .xAxisLabel("Year")
-        .yAxisLabel("Number Found")
+        .xAxisLabel("Upated")
+        .yAxisLabel("Total Found")
         .yAxis().ticks(3);
 
     podPie

@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/callump5/Exo-Planet/issues"
   },
-  "homepage": "https://github.com/callump5/Exo-Planet#readme"
+  "homepage": "https://github.com/callump5/Exo-Planet#readme",
+  "dependencies": {
+    "express": "4.15.4",
+    "foobar": "^1.1.0"
+  }
 }

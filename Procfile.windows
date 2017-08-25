@@ -1,1 +1,1 @@
-web: python exo_planet.py
+web: python nasa_data.py

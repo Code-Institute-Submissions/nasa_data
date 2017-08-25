@@ -1,3 +1,4 @@
 .idea
 flask_test
 .env
+node_modules

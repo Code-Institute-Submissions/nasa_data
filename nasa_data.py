@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
-DBS_NAME = os.getenv('MONGO_DB_NAME', 'nasaExoPlanet')
+DBS_NAME = os.getenv('MONGO_DB_NAME', 'nasaExoData')
 COLLECTION_NAME = 'project'
 
 
@@ -49,4 +49,4 @@ def planet_charts():
 
 
 if __name__ == '__main__':
-    app.run(debug=True,  port=33507)
+    app.run(debug=True)

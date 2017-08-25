@@ -1,0 +1,19 @@
+{
+  "name": "exo-planet",
+  "version": "1.0.0",
+  "description": "data dash board on nasa data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callump5/Exo-Planet.git"
+  },
+  "author": "Callum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/callump5/Exo-Planet/issues"
+  },
+  "homepage": "https://github.com/callump5/Exo-Planet#readme"
+}

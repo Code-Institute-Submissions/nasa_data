@@ -2,12 +2,12 @@ from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
 import json
+import os
 
 app = Flask(__name__)
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DB_NAME = 'nasaExoData'
+MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
+DBS_NAME = os.getenv('MONGO_DB_NAME', 'nasaExoPlanet')
 COLLECTION_NAME = 'project'
 
 
@@ -39,9 +39,9 @@ def planet_charts():
         'Status': True
     }
 
-    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
-        collection = conn[DB_NAME][COLLECTION_NAME]
-        projects = collection.find(projection = FIELDS, limit = 55000)
+    with MongoClient(MONGO_URI) as conn:
+        collection = conn[DBS_NAME][COLLECTION_NAME]
+        projects = collection.find(projection = FIELDS, limit = 1000)
         return json.dumps(list(projects))
 
 

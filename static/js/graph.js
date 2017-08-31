@@ -54,12 +54,16 @@ function makeGraphs(error, keplerDataExoPlanets) {
         return d['PlaceOfDiscovery'];
     });
 
-    var statusDim = ndx.dimension(function (d){
-        return  d['Status'];
+    var facilityDim = ndx.dimension(function (d) {
+        return d['DiscoveryFacility']
     });
 
     // Create metrics
+    var all = ndx.groupAll();
+
     var telescopeGroup = telescopeDim.group();
+    var facilityGroup = facilityDim.group();
+    var topFive = facilityDim.top(5)['DiscoveryFacility'];
 
     var dateGroup = dateDim.group();
     var minDate = dateDim.bottom(1)[0]['DiscoveryYear'];
@@ -86,16 +90,14 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .domain([0, d3.max(keplerDataExoPlanets)])
         .range(2000);
 
-    var colorScale = d3.scale.linear()
-                   .domain([0,d3.max(keplerDataExoPlanets)])
-                   .range(["blue","red"]);
-
     // Link Graphs
     var menuSelect = dc.selectMenu("#menu-select");
+    var dataCount = dc.dataCount("#data-count");
     var dateGraph = dc.lineChart("#date-graph");
     var updatedGraph = dc.lineChart("#updated-graph");
     var podPie = dc.pieChart('#pod-pie');
     var methodPie = dc.pieChart('#status-pie');
+    var methodGraph = dc.rowChart('#method-graph');
     var dataTable = dc.dataTable("#data-table");
 
     // Create Graphs
@@ -104,9 +106,14 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .dimension(telescopeDim)
         .group(telescopeGroup);
 
+
+    dataCount
+        .dimension(ndx)
+        .group(all);
+
     dateGraph
         .height(500)
-        .width(560)
+        .width(700)
         .dimension(dateDim)
         .group(dateGroup)
         .x(dateScale)
@@ -115,9 +122,14 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .yAxisLabel("Total Found")
         .yAxis().ticks(3);
 
+
+    dc.dataCount('.dc-data-count')
+        .dimension(ndx)
+        .group(all);
+
     updatedGraph
         .height(500)
-        .width(560)
+        .width(700)
         .dimension(updatedDim)
         .group(updatedGroup)
         .x(updateScaled)
@@ -127,28 +139,34 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .yAxis().ticks(3);
 
     podPie
-        .width(210)
         .height(221)
         .slicesCap(5)
         .innerRadius(10)
         .dimension(podDim)
-        .group(podGroup);
+        .group(podGroup)
+        .legend(dc.legend());
 
     methodPie
-        .width(210)
         .height(221)
         .slicesCap(5)
         .innerRadius(10)
         .dimension(methodDim)
-        .group(methodGroup);
+        .group(methodGroup)
+        .legend(dc.legend());
 
+    methodGraph
+        .width(300)
+        .height(500)
+        .dimension(dateDim)
+        .group(dateGroup)
+        .xAxis().ticks(6);
 
 
     dataTable
         .height(500)
         .dimension(methodDim)
         .group(function (d) {
-            return d['HostName']
+            return d['DiscoveryMethod']
         })
         .columns([
             {

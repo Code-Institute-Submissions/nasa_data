@@ -1,47 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nasa Dashboard Exo-Planets</title>
-    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/reset.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
-
-</head>
-<body>
-<!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Nasa Data Dashboard</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Home</a></li>
-                <li><a href="/exoPlanets">Exo-Planets</a></li>
-                <li><a href="/stars">Stars</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-<!-- / Navigation -->
-
-
+{% extends "index.html" %}
+{% block page_content %}
 <!-- Body -->
-    <div id="outer" class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
                     <!-- Menu Select -->
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="chart-wrapper">
                             <div class="chart-title">
                                 Telescope Select
@@ -52,8 +16,24 @@
                         </div>
                     </div>
                     <!-- / Menu Select -->
+
+                    <!-- Data Count -->
+                    <div class="col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Data Count
+                            </div>
+                            <div class="chart-stage">
+                                <div id="data-count">
+                                    <p><strong class="filter-count"></strong> selected out of <strong class="total-count"></strong> records</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Data Count -->
+
                     <!-- Date Graph -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-8">
                         <div class="chart-wrapper">
                             <div class="chart-title">
                                 Year of Discovery
@@ -65,21 +45,6 @@
                     </div>
                     <!-- / Date Graph -->
 
-
-                    <!-- Updated Graph-->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Last Updated
-                            </div>
-                            <div class="chart-stage">
-                                <div id="updated-graph"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / Updated Graph -->
-
-
                     <!-- POD Pie -->
                     <div class="col-sm-4">
                         <div class="chart-wrapper">
@@ -88,10 +53,6 @@
                             </div>
                             <div class="chart-stage">
                                 <div id="pod-pie"></div>
-                                <ul>
-                                    <li>Ground: Can be hindered a lot by the earths atmosphere and light pollution </li>
-                                    <li>Space: although the quality is much better as data isn't obscured by the atmosphere, using space telescopes can be rather expensive</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -105,15 +66,39 @@
                             </div>
                             <div class="chart-stage">
                                 <div id="status-pie"></div>
-                                <ul>
-                                    <li>Imaging: Taking a direct image of the planet; very unlikely but possible</li>
-                                    <li>Radial Velocity: Observe host star for change in position caused by the gravitional pull of other planets</li>
-                                    <li>Transit: Measure for a dip in the host stars brightness, meaning something is passing by to block the light</li>
-                                </ul>
                             </div>
                        </div>
                     </div>
                     <!-- / Status Pie-->
+
+                     <!-- Updated Graph-->
+                    <div class="col-sm-8">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Last Updated
+                            </div>
+                            <div class="chart-stage">
+                                <div id="updated-graph"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Updated Graph -->
+
+                    <!-- Method Graph-->
+                    <div class="col-sm-4">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Method Graph
+                            </div>
+                            <div class="chart-stage">
+                                <div id="method-graph"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Method Graph -->
+
+
+
 
                     <!-- Data Table -->
                     <div class="col-sm-12">
@@ -133,33 +118,7 @@
                 </div>
             </div>
         </div>
-    </div>
 <!-- / Body -->
+{% endblock %}
 
 
-
-
-    <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
-    <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
-</body>
-</html>
-
-
-
-
-
-    <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
-    <script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
-</body>

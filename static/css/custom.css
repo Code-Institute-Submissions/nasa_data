@@ -74,6 +74,7 @@ body  {
     border: 5px solid white;
     border-radius: 30px;
     color: white;
+    padding: 20px 0 20px 20px;
 }
 
 #intro {
@@ -83,7 +84,16 @@ body  {
 }
 
 #intro-content > h1 {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+    font-size: 41px;
+}
+
+#intro-content > p {
+    font-size: 22px;
+}
+
+#img{
+    transform: scale(0.9);
 }
 
 /**************/
@@ -92,6 +102,10 @@ body  {
 
 th,td {
     padding-right: 20px;
+}
+
+td {
+    font-size: 0.7em;
 }
 
 /**********/
@@ -104,6 +118,10 @@ th,td {
 
 div > .chart-wrapper {
     background-color: silver;
+}
+
+#data-count > p {
+    margin: 0;
 }
 
 

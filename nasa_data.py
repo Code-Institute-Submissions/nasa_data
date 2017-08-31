@@ -55,7 +55,7 @@ def planet_charts():
 
     with MongoClient(MONGO_URI) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
-        projects = collection.find(projection = FIELDS, limit = 1000)
+        projects = collection.find(projection = FIELDS, limit = 10000)
         return json.dumps(list(projects))
 
 """

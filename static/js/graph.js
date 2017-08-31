@@ -155,12 +155,10 @@ function makeGraphs(error, keplerDataExoPlanets) {
         .legend(dc.legend());
 
     methodGraph
-        .width(300)
         .height(500)
         .dimension(dateDim)
         .group(dateGroup)
         .xAxis().ticks(6);
-
 
     dataTable
         .height(500)

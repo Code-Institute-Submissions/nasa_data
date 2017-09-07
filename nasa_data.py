@@ -6,19 +6,18 @@ import os
 
 app = Flask(__name__)
 
-
-
+"""
 MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'nasaExoData')
-COLLECTION_NAME = 'project'
+COLLECTION_NAME = 'project' 
 """
+
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DB_NAME = 'nasaExoData'
 COLLECTION_NAME = 'project'
- """
 
-
+# Page Nav
 @app.route('/')
 def index():
     return render_template('home.html')
@@ -26,6 +25,7 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 @app.route('/exoPlanets')
 def chart():
@@ -42,7 +42,7 @@ def planet_charts():
         '_id': False,
         'PlanetName': True,
         'HostName': True,
-        'DiscoveryYear':True,
+        'DiscoveryYear': True,
         'Updated': True,
         'DiscoveryMethod': True,
         'PlaceOfDiscovery': True,
@@ -51,21 +51,35 @@ def planet_charts():
         'Status': True
     }
 
-
-
-    with MongoClient(MONGO_URI) as conn:
+    """
+    withMongoClient(MONGO_URI) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
         projects = collection.find(projection = FIELDS, limit = 10000)
         return json.dumps(list(projects))
+    """
 
-"""
-withMongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
-    collection = conn[DB_NAME][COLLECTION_NAME]
-    projects = collection.find(projection = FIELDS, limit = 55000)
-return json.dumps(list(projects))
-"""
+    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
+        collection = conn[DB_NAME][COLLECTION_NAME]
+        projects = collection.find(projection=FIELDS, limit=10000)
+        return json.dumps(list(projects))
 
 
+# About Nav
+@app.route('/about/discovery_method')
+def discover_method():
+    return render_template('about/discovery_method.html')
+
+@app.route('/about/year_founded')
+def year_found():
+    return render_template('about/year_founded.html')
+
+@app.route('/about/place_of_discovery')
+def place_of_discovery():
+    return render_template('about/place_of_discovery.html')
+
+@app.route('/about/data_table')
+def data_table():
+    return render_template('about/data_table.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

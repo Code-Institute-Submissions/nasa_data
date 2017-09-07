@@ -61,11 +61,15 @@ body  {
 /* Content Css */
 /***************/
 
-#outer, #outer.jumbotron {
+#outer {
     margin-top: 70px;
-    }
+}
 
-#outer.jumbotron {
+#outer.jumbotron{
+    margin-top:30px
+}
+
+#outer.jumbotron, #about {
     background: rgb(69,72,77); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -74,22 +78,24 @@ body  {
     border: 5px solid white;
     border-radius: 30px;
     color: white;
-    padding: 20px 0 20px 20px;
+    padding: 10px 20px 20px 20px;
 }
 
-#intro {
+.intro {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 #intro-content > h1 {
-    padding-bottom: 20px;
     font-size: 41px;
 }
 
 #intro-content > p {
     font-size: 22px;
+    margin-left: 5px;
+    padding-top: 5px;
+
 }
 
 #img{

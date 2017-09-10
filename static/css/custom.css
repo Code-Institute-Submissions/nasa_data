@@ -7,7 +7,7 @@
 	font-family: Futura,"Trebuchet MS",Arial,sans-serif
 }
 
-*, .chart-title, .dc-select-menu, text, th, td, h1, p, a, li {
+*, .chart-title, .dc-select-menu, text, th, td, h1, h2, h3, p, a, li {
     font-family: myfont;
 }
 
@@ -65,7 +65,7 @@ body  {
     margin-top: 70px;
 }
 
-#outer.jumbotron{
+#outer.jumbotron, #about {
     margin-top:30px
 }
 
@@ -100,6 +100,57 @@ body  {
 
 #img{
     transform: scale(0.9);
+}
+
+/************/
+/* d-method */
+/************/
+
+.d-method {
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+
+/*******************/
+/* POD Pros & Cons */
+/*******************/
+
+#about.container {
+    margin-bottom: 50px;
+}
+
+.about-content, .dm-content {
+    font-size: 1.5em;
+    text-align: justify;
+    padding: 0 25px;
+}
+
+.about-content:last-child{
+    padding-bottom: 0;
+}
+
+.about-content:last-child > h1 {
+    margin-top: 0;
+}
+
+.p-s-list {
+    border: 5px white solid;
+    border-radius: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.p-s-list > h2 {
+    margin-bottom: 0;
+}
+
+.p-s-list:first-child {
+    margin-top: 20px;
+}
+.p-s-list:last-child {
+    margin-bottom: 20px;
 }
 
 /**************/

@@ -1,14 +1,8 @@
 {% extends "index.html" %}
 {% block page_content %}
 
-    <div id="outer" class="jumbotron">
-        <div id="intro-content">
-            {% block about_content %}
-
-            {% endblock %}
-        </div>
-
+    <div class="container" id="about">
+        {% block about_content %}
+        {% endblock %}
     </div>
-
-
 {% endblock %}

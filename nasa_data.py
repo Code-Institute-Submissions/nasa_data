@@ -6,16 +6,16 @@ import os
 
 app = Flask(__name__)
 
-
+"""
 MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'nasaExoData')
 COLLECTION_NAME = 'project' 
 """
+
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DB_NAME = 'nasaExoData'
 COLLECTION_NAME = 'project'
-"""
 
 
 # Page Nav
@@ -52,17 +52,16 @@ def planet_charts():
         'Status': True
     }
 
-
-    with MongoClient(MONGO_URI) as conn:
+    """
+    withMongoClient(MONGO_URI) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
         projects = collection.find(projection = FIELDS, limit = 10000)
         return json.dumps(list(projects))
     """
-    withMongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
+    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
         collection = conn[DB_NAME][COLLECTION_NAME]
         projects = collection.find(projection=FIELDS, limit=10000)
         return json.dumps(list(projects))
-    """
 
 
 # About Dropdown

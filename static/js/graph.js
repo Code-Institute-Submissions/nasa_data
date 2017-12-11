@@ -102,6 +102,8 @@ function makeGraphs(error, keplerDataExoPlanets) {
 
     // Create Graphs
 
+    var width = document.getElementById('date-graph').offsetWidth;
+
     menuSelect
         .dimension(telescopeDim)
         .group(telescopeGroup);
@@ -113,7 +115,7 @@ function makeGraphs(error, keplerDataExoPlanets) {
 
     dateGraph
         .height(500)
-        .width(700)
+        .width(width)
         .dimension(dateDim)
         .group(dateGroup)
         .x(dateScale)
@@ -129,7 +131,7 @@ function makeGraphs(error, keplerDataExoPlanets) {
 
     updatedGraph
         .height(500)
-        .width(700)
+        .width(width)
         .dimension(updatedDim)
         .group(updatedGroup)
         .x(updateScaled)

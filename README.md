@@ -50,7 +50,7 @@ The dashboard plots the different methods used to find exo-planets, and crossfil
 	- We use **AngularJS** to handle page routing
 - [Dc](https://dc-js.github.io/dc.js/)
     - Used for dimensional charting 
--[D3](https://d3js.org/)
+- [D3](https://d3js.org/)
     - Used for manipulating documents based on data
 - [Crossfilter](http://square.github.io/crossfilter/)
     - Used for exploring large multivariate datasets in the browser. 

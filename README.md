@@ -1,4 +1,7 @@
 # Kepler Data-set Dashboard
+
+- Hosted Link: https://nasa-data-dashboard.herokuapp.com/#
+- Github Link: https://github.com/callump5/nasa_data
 ## Overview
 ### What is this app for?
 This dashboard looks at data gathered by the Keplar telescope.
@@ -23,11 +26,12 @@ The dashboard plots the different methods used to find exo-planets, and crossfil
 - Thanks to Nasa for making their datasets avaible to the public
 ## Features
 ### Existing Features
-
+- Exo-planet graphs
 
 ### Features Left to Implement
 - Star graphs
 - Habitability calculator
+
 ## Tech Used
 ### Some the tech used includes:
 - [Bootstrap](http://getbootstrap.com/)

@@ -9,8 +9,14 @@ This dashboard looks at data gathered by the Keplar telescope.
 Although this project will be focusing on plotting data for Kepler's data-sets on exo-planets, 
 Ive added in a tab for stars too.
 
-In future i hope to continue this project by adding graphs for star objects observed by the Kepler telescope, and cross refernce the two to
-try work out if a exo planet is in a stars 'habitability zone'. However this would requiring learning the math first. If any of that is at all possible that is!
+In future i hope to continue this project by adding graphs for star objects observed by the Kepler telescope, and cross refernce the two to, to try work out if a exo planet is in a stars 'habitability zone'. However this would requiring learning the math first. If any of that is at all possible that is!
+
+After looking into this more on http://www.planetarybiology.com/, I emailed Tom Morris who works in the Natural Sciences Division from Fullerton College. He told me he uses 2 steps:
+- Import a csv file and apply calculations, then stores the data in a MySQL database
+- Use python to draw values out and display them
+
+So after I make the calculations to the host star to find the habibility radius, I'd store this data and crossreference it with the exo-planet data and find planets that lie in the stars habibility radius! 
+
 
 ### What does it do?
 The dashboard plots the different methods used to find exo-planets, and crossfilters the data against:
